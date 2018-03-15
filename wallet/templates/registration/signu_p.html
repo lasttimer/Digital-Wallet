@@ -1,0 +1,11 @@
+<html>
+<body>
+<form method=post action="users/signup/">{% csrf_token %}
+<input type="text" name="phone" placeholde="Phone No">
+<input type="text" name="email" placeholde="Email">
+<input type="text" name="password1" placeholde="Password">
+<input type="text" name="password2" placeholde="Password Again">
+<input type="submit" value="signup">
+</form> 
+</body>
+</html>

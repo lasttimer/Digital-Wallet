@@ -1,0 +1,62 @@
+{%load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/stylelogin.css' %}">
+</head>
+<body>
+ <header>
+		<div class="icon">
+			<a href="\">FastCharge</a>
+		</div>
+		<div class="loginpage">
+			<a href="\wallet/signup">REGISTER</a>
+		</div>
+	</header>
+
+<main>
+
+		<nav>
+			<a href="#"><li>Balance</li></a>
+			<a href="#"><li>Add Money</li></a>
+			<a href="#"><li>Passbook</li></a>
+			<a href="#"><li>Fixed Deposit</li></a>
+			<a href="#"><li>Intrest Rate</li></a>
+			<a href="#"><li>Offers</li></a>
+			<a href="#"><li>Help/Contact</li></a>
+			<a href="#"><li>About</li></a>
+
+		</nav>
+			</section>
+		<section class="spotlight">
+			<h4>SPOTLIGHT</h4>
+			<p>Get exciting offers by inviting others</p>
+
+		</section>
+
+<section class="user">
+
+{% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+{% endif %}
+<h3>User Login</h3>
+
+{% if form.has_errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+<p>Enter your Mobile No. and Password</p>
+<form method="post">
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit" value="login" />
+
+</form>
+</body>
+</html>

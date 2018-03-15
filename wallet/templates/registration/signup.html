@@ -1,0 +1,42 @@
+<html>
+<body>
+
+<h1>Digital Wallet- Signup</h1>
+<form method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<p>
+<table>
+<tr>
+<td>Username:</td>
+<td><input type="text" size=25 name="username" placeholder="username">{{form.username}}</td>
+</tr>
+
+
+<tr>
+<td>Phone No:</td>
+<td><input type="text" size=25 name="phone" placeholder="phone">{{form.phone}}</td>
+</tr>
+
+<tr>
+<td>Email:</td>
+<td><input type="text" size=25 name="email" placeholder="Email">{{form.email}}</td>
+</tr>
+
+<tr>
+<td>Password:</td>
+<td><input type="password" size=25 name="password1" placeholder="Password">{{form.password1}}</td>
+</tr>
+
+<tr>
+<td>Password Again:</td>
+<td><input type="password" size=25 name="password2" placeholder="Retype Password">{{form.password2}}</td>
+</tr>
+<tr>
+<td><input type="submit" value="Register"></td>
+</tr>
+</table>
+</p>
+</form> 
+</body>
+</html>
