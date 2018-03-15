@@ -1,0 +1,181 @@
+
+body {
+	font-family: SansSerif, Helvetica; 
+}
+
+a {
+	text-decoration: none;
+}
+
+
+li {
+	margin-left: -8px;
+	list-style-type: none;
+	padding:20px 78px;
+    background-color:#F1F1F1;
+    color:grey;
+    font-size: 12px;
+/*    border-bottom: solid #B0B0B0 1px;
+*/
+}
+li:hover{
+    background-color:#FADADA;
+    transform: scale(1.05);
+    
+    
+}
+
+
+.icon a {
+	color: tomato;
+	font-size: 20px;
+	margin-left: 20px;
+	margin-top: 10px;
+	display: inline-block;
+}
+
+.login a{
+	color: white;
+	font-size: 12px;
+	background-color: tomato;
+	padding: 7px 30px;
+	border-radius: 3px;
+	float: right;
+	margin-top: -25px;
+/*	letter-spacing: 1px;
+*/}
+header {
+	background-color: white;
+	padding-bottom: 20px;
+	border-bottom: solid #F1F1F1 1px;
+}
+
+nav {
+	 display: inline-block;
+	 background-color: #F0F4F5;
+	 /*border:solid black;*/
+
+}
+
+h3 {
+	color: tomato;
+	font-size: 18px;
+}
+
+h2{
+	color: tomato;
+}
+
+h1{
+	color: tomato;
+	padding-bottom: 20px;
+	font-size: 30px;
+	letter-spacing: 2px;
+}
+
+.input {
+	background: linear-gradient(#fff, transparent ),url('../images/abc.jpg');
+	background-size: cover;
+	text-align: center;
+	text-decoration: bold;
+	position:absolute;
+    top:11%;
+    left:17%;
+    width:56%;
+    height: 350px;
+    display: inline-block;
+	padding : 90px 50px 50px 50px;
+	border-radius: 10px;
+	/*border: solid black;*/
+}
+input{
+    height:30px;
+    text-align:center;
+    width:250px;
+    color: grey;
+    border-radius:5px; 
+    /*visibility: 50%;   */
+}
+button{
+    color:grey;
+    width:80px;
+    height:30px;
+    border-radius:5px;
+    box-shadow: 2px 2px #888888;
+}
+.spotlight {
+	float: right;
+	text-align :center;
+	
+/*	display: inline-block;
+	position: absolute;
+	top: 20%
+	right:50%;*/
+	width: 16%;
+	padding: 10px 22px;
+	height: 450px;
+	background-color: #F0F4F5;
+	/*border :solid black;*/
+
+}
+h4 {
+	font-size: 15px;
+	color: tomato;
+}
+p {
+	font-size: 15px;
+	color: grey;
+}
+
+
+
+
+/*---------------------------------------------------------
+                     ADD MONEY PAGE 
+--------------------------------------------------------*/
+
+
+.addmoney {
+	background:/* linear-gradient(#fff, transparent ),*/url('../images/digitalcurrency.jpg');
+	background-size: cover;
+	text-align: center;
+	text-decoration: bold;
+	position:absolute;
+    top:11%;
+    left:17%;
+    width:56%;
+    height: 350px;
+    display: inline-block;
+	padding : 90px 50px 50px 50px;
+	border-radius: 10px;
+}	
+.addmoney a {
+	opacity: 0.3;
+	color: red;
+	padding: 15px;
+/*	background-color: tomato;
+*/	border-radius: 15px;
+	margin:50px;
+
+}
+
+.addmoney button{
+	opacity: 0.8;
+    color:white;
+    width:300px;
+    height:45px;
+    border-radius:10px;
+    box-shadow: 2px 2px #888888;
+    background-color: tomato;
+}
+
+.addmoney input{
+	opacity: 0.8;
+    height:45px;
+    text-align:center;
+    width:300px;
+    color: grey;
+    border-radius:10px;
+    margin-right: 80px; 
+    /*visibility: 50%;   */
+}

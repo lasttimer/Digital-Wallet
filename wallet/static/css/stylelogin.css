@@ -1,0 +1,25 @@
+.user
+{
+	background: linear-gradient(#fff, transparent ),url('../images/login.jpg');
+	background-size: cover;
+	text-align: center;
+	text-align: center;
+	text-decoration: bold;
+	position:absolute;
+    top:11%;
+    left:17%;
+    width:56%;
+    height: 350px;
+    display: inline-block;
+	padding : 90px 50px 50px 50px;
+	border-radius: 10px;
+}
+.loginpage a{
+	color: white;
+	font-size: 12px;
+	background-color: tomato;
+	padding: 7px 30px;
+	border-radius: 3px;
+	float: right;
+	margin-top: -25px;
+}
