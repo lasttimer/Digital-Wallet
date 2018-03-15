@@ -1,0 +1,67 @@
+{%load static %}
+
+<!doctype html>
+<html>
+<head>
+    <title>Fast Charge</title>
+    <link rel="stylesheet" type="text/css" 
+    	href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <header>
+		<div class="icon">
+			<a href="\">Fast Charge</a>
+		</div>
+
+        {%if user.username%}        
+          <p>welcome {{user.first_name}}</p>
+
+        <div class="login">
+          <a href="wallet/logout">Logout</a><br>
+        </div>
+
+        {%else%}
+          <div class="login">
+			<a href="/wallet/login">LOGIN / REGISTER</a>
+		</div>
+        {%endif%}
+    </header>
+
+   <main>
+		<nav>
+			
+			{%if user.username%}
+			  <a href="wallet/balance"><li>Balance</li></a>
+			  <a href="wallet/addmoney"><li>Add Money</li></a>
+            {%else%}
+              <a href="#"><li>Balance</li></a>
+              <a href="#"><li>Add Money</li></a>
+            {%endif%}
+			<a href="#"><li>Passbook</li></a>
+			<a href="#"><li>Fixed Deposit</li></a>
+			<a href="#"><li>Intrest Rate</li></a>
+			<a href="#"><li>Offers</li></a>
+			<a href="#"><li>Help/Contact</li></a>
+			<a href="#"><li>About</li></a>
+
+		</nav>
+		<section class="input">
+			<div><h3>Send Money</h3></div>
+			<p>Tell the reciever number and we will figure out the rest.</p>
+		
+		<form method="post">
+			{% csrf_token %}
+			{{ form.as_p}}
+        	<button>Pay</button></center>
+
+		</form>
+		</section>
+		<section class="spotlight">
+			<h4>SPOTLIGHT</h4>
+			<p>Get exciting offers by inviting others</p>
+
+		</section>
+	</main>
+</body>
+</html>

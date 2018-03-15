@@ -1,0 +1,54 @@
+{%load static %}
+
+<html>
+<head>
+	<title>Register</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/styleregister.css' %}">
+</head>
+<body>
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+<header>
+		<div class="icon">
+			<a href="\wallet">FastCharge</a>
+		</div>
+		<div class="regpage">
+			<a href="\wallet/login">BACK TO LOGIN</a>
+		</div>
+	</header>
+	<main>
+		<nav>
+			<a href="#"><li>Balance</li></a>
+			<a href="#"><li>Add Money</li></a>
+			<a href="#"><li>Passbook</li></a>
+			<a href="#"><li>Fixed Deposit</li></a>
+			<a href="#"><li>Intrest Rate</li></a>
+			<a href="#"><li>Offers</li></a>
+			<a href="#"><li>Help/Contact</li></a>
+			<a href="#"><li>About</li></a>
+
+		</nav>
+<section class="reg">
+		<h1>Enter Your Details Here</h1>
+		<form name="f" method="post" action="" >
+		{% csrf_token %}
+		{{ form.as_p}}
+		<input type="submit" value="Register" />
+		</form> 
+
+</section>
+	</section>
+			<section class="spotlight">
+			<h4>SPOTLIGHT</h4>
+			<p>Get exciting offers by inviting others</p>
+
+	</section>
+
+{% endblock %}
+</body>
+</html>

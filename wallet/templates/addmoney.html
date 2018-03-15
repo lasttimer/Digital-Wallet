@@ -1,0 +1,58 @@
+{%load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Money</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+	<header>
+		<div class="icon">
+			<a href="\">FastCharge</a>
+		</div>
+		{%if user.username%}        
+          <p>welcome {{user.first_name}}</p>
+
+        {%else%}
+          <div class="login">
+			<a href="/wallet/login">LOGIN / REGISTER</a>
+		</div>
+        {%endif%}
+	</header>
+	<main>
+		<nav>
+			{%if user.username%}
+			  <a href="\wallet/balance"><li>Balance</li></a>
+			  <a href="\wallet/addmoney"><li>Add Money</li></a>
+            {%else%}
+              <a href="#"><li>Balance</li></a>
+              <a href="#"><li>Add Money</li></a>
+            {%endif%}
+			<a href="#"><li>Passbook</li></a>
+			<a href="#"><li>Fixed Deposit</li></a>
+			<a href="#"><li>Intrest Rate</li></a>
+			<a href="#"><li>Offers</li></a>
+			<a href="#"><li>Help/Contact</li></a>
+			<a href="#"><li>About</li></a>
+
+		</nav>
+			</section>
+		<section class="spotlight">
+			<h4>SPOTLIGHT</h4>
+			<p>Get exciting offers by inviting others</p>
+
+		</section>
+		<section class="addmoney">
+			<h2>Add Money To Wallet</h2>
+			
+		<form method="post">
+			{% csrf_token %}
+			<input type="number" placeholder ="Enter Amount to be Added to Wallet" name="amount">
+        	<button>Add Money To Wallet</button><!-- </center> --></br>
+		</form>
+		</section>
+
+</body>
+</html>
