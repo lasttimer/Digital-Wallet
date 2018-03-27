@@ -1,10 +1,12 @@
 """from django.shortcuts import render
 from django.views.generic import TemplateView"""
 
+from django.conf import settings
+from django.contrib import messages
+from django.core.mail import send_mail
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from wallet.models import balance
-from django.contrib import messages
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as auth_login
 from django.http import HttpResponse, HttpResponseRedirect
@@ -20,7 +22,7 @@ from django.core.exceptions import ValidationError
 def login(request):
 	l = LoginForm(request.POST or None)
 	if request.method == 'POST':
-		print("hello")
+		print("hello in login")
 		#phone = request.POST.get('phone')
         #password = request.POST.get('password')
         if l.is_valid():
@@ -48,6 +50,12 @@ def signup(request):
                                      email=f.cleaned_data['email'],
                                      password=f.cleaned_data['password1'],
                                     )
+			subject = 'Register'
+			message = 'Thank u for registeration'
+			from_email = settings.EMAIL_HOST_USER
+			to_list = [user.email,]
+			print(user.email)
+			send_mail(subject,message,from_email,to_list,fail_silently=True)
 			bala=balance.objects.create(username=f.cleaned_data['phone'], balance=0, fd=0,)
 			bala.save()
 			messages.success(request, 'Account created successfully Please Login')
@@ -90,27 +98,80 @@ def signup(request):
     output = template.render(variables)
     return HttpResponse(output)"""
 def main_page(request):
-	m = SendMoneyForm(request.POST or None)
 	if request.method == 'POST':
-		print("hello")
-        if m.is_valid():
-        	r=request.POST.get('phone')
-        	a=request.POST.get('amount')
-        	user = User.objects.get(username=request.user.username)
-        	data = balance.objects.get(username=user)
-        	x = balance.objects.get(username=r)
-        	p=x.balance
-        	q=data.balance
-        	if q>=p:
-	        	
-	        	p = p+float(a)
-	        	x.balance=p
-	        	x.save()
-	        	
-	        	q = q-float(a)
-	        	data.balance=q
-	        	data.save()     		
-	return render(request,'main_page.html',{'form':m})
+		m= SendMoneyForm(request.POST, request=request or None)
+		if m.is_valid():
+			print("in newwww")
+			r=request.POST.get('phone')
+			a=request.POST.get('amount')
+			sndr= balance.objects.get(username=request.user.username)
+			rcvr= balance.objects.get(username=r)
+			p= sndr.balance
+			q= rcvr.balance
+			print("rcvr balancce")
+			print(q)
+			data= User.objects.get(username=r)
+			nam = data.first_name
+			if int(p) >= int(a) and sndr.username != rcvr.username:
+				p=float(p)-float(a)
+				sndr.balance=p
+				sndr.save()
+				p=sndr.balance
+				print("sndr final bal")
+				print(p)
+				q= rcvr.balance
+				q=float(q)+float(a)
+				rcvr.balance=q				
+				rcvr.save()
+				messages.success(request, "You have successfully sent money to " + nam + "("+r+")")	
+		        #return render(request,'main_page.html',{'form':m}) 	
+			else:
+				messages.success(request, "Money not sent ")  
+				#return render(request,'main_page.html',{'form':m})
+	else:
+		m=SendMoneyForm(request=request)
+	return render(request, 'main_page.html', {'form': m})
+
+
+	#m = SendMoneyForm(None or request.POST, request=request )
+	
+	"""m = SendMoneyForm(request.POST, request=request or None)
+	if request.method == 'POST':
+	    if m.is_valid():
+	       	print("m is valid")
+	       	r=request.POST.get('phone')
+	       	a=request.POST.get('amount')
+	       	user = User.objects.get(username=request.user.username)
+	       	data =  User.objects.get(username=r)
+	       	print(data.first_name)
+	       	s = balance.objects.get(username=user)
+	       	x = balance.objects.get(username=r)
+	       	p=float(x.balance)
+	       	print("p= ")
+	       	print(p)
+	       	q= s.balance
+	       	print("q= ")
+	       	print(q)
+	       	nam = data.first_name
+	       	if int(q)>=int(a):
+	       		print("condition is true")	        	
+		       	q = q-float(a)
+		       	print("before balance ")
+		       	print(s.balance)
+		       	s.balance=q
+		       	print("after balance ")
+		       	print(s.balance)
+		       	s.save()
+		       	p = p+float(a)
+		       	x.balance=p
+		      	x.save()		     	
+		        messages.success(request, "You have successfully sent money to " + nam + "("+r+")")	
+		        return render(request,'main_page.html',{'form':m, 'data': data,}) 	    
+		    else :
+		    	messages.success(request, "Money not sent ")
+		     		
+	m=SendMoneyForm(request=request or None)
+	return render(request,'main_page.html',{'form':m}) """
 
 def addmoney(request):
 	if request.method == 'POST':
